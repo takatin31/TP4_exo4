@@ -7,6 +7,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.ViewManager
 import android.widget.RelativeLayout
 import kotlinx.android.synthetic.main.fragment_enseignant.*
 import kotlinx.android.synthetic.main.fragment_module.*
@@ -15,6 +16,7 @@ import kotlinx.android.synthetic.main.fragment_module.sortirBtnView
 class EnseignantFragment : Fragment() {
 
     lateinit var enseignant: Enseignant
+    var exit : Boolean = true
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -26,6 +28,7 @@ class EnseignantFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         enseignant = arguments?.getSerializable("prof") as Enseignant
+        exit = arguments!!.getBoolean("exit")
         return inflater.inflate(R.layout.fragment_enseignant, container, false)
     }
 
@@ -36,12 +39,17 @@ class EnseignantFragment : Fragment() {
         emailTextView.text = enseignant.email
         numberTextView.text = enseignant.numero.toString()
 
-        sortirBtnView.setOnClickListener {
-            val transaction = activity!!.supportFragmentManager.beginTransaction()
-            val flouLayout = activity!!.findViewById<RelativeLayout>(R.id.flouLayout)
-            flouLayout.visibility = View.INVISIBLE
-            transaction.remove(this)
-            transaction.commit()
+        if (!exit){
+            val v = sortirBtnView
+            (v.parent as ViewManager).removeView(sortirBtnView)
+        }else {
+            sortirBtnView.setOnClickListener {
+                val transaction = activity!!.supportFragmentManager.beginTransaction()
+                val flouLayout = activity!!.findViewById<RelativeLayout>(R.id.flouLayout)
+                flouLayout.visibility = View.INVISIBLE
+                transaction.remove(this)
+                transaction.commit()
+            }
         }
     }
 }

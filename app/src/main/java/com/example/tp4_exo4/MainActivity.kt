@@ -152,7 +152,7 @@ class MainActivity : AppCompatActivity() {
                 holder.seanceLayout.setOnClickListener {
 
                     val bundle = Bundle()
-                    bundle.putInt("seanceIndex",position)
+                    bundle.putBoolean("exit",false)
                     bundle.putSerializable("module", activity.listSeance[position].module as Serializable)
 
                     val transaction = activity.supportFragmentManager.beginTransaction()
@@ -165,7 +165,7 @@ class MainActivity : AppCompatActivity() {
                     transaction.commit()
 
                     val bundle2 = Bundle()
-                    bundle2.putInt("seanceIndex",position)
+                    bundle2.putBoolean("exit",false)
                     bundle2.putSerializable("prof", activity.listSeance[position].module.enseignant as Serializable)
 
                     val transaction2 = activity.supportFragmentManager.beginTransaction()
@@ -183,7 +183,7 @@ class MainActivity : AppCompatActivity() {
                     flouLayout.visibility = View.VISIBLE
 
                     val bundle = Bundle()
-                    bundle.putInt("seanceIndex",position)
+                    bundle.putBoolean("exit",true)
                     bundle.putSerializable("module", activity.listSeance[position].module as Serializable)
 
                     val transaction = activity.supportFragmentManager.beginTransaction()
