@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">Emploi de temps</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="moduleInt">Intitule du module</string>
+    <string name="moduleDuree">Durée du module</string>
+    <string name="enseignant">Enseignant</string>
+    <string name="sortir">Sortir</string>
+    <string name="nom">Nom</string>
+    <string name="prenom">Prenom</string>
+    <string name="email">Email</string>
+    <string name="numero">Numero de telephone</string>
+</resources>
